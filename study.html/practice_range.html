@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallace Ganda | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website for Wallace Ganda, a KCA University student passionate about software development."
+    />
+    <style>
+      :root {
+        --bg: #f5f0ea;
+        --panel: #fffdfb;
+        --primary: #1b2a3a;
+        --secondary: #d07a5a;
+        --text: #202b36;
+        --muted: #5b6977;
+        --accent: #f3d7c5;
+        --shadow: rgba(23, 33, 42, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        background: rgba(245, 240, 234, 0.95);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(27, 42, 58, 0.08);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+
+      .brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+        font-weight: 600;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--secondary);
+      }
+
+      .nav-links .button-link {
+        background: var(--primary);
+        color: #fff;
+        padding: 11px 18px;
+        border-radius: 999px;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: rgba(208, 122, 90, 0.12);
+        color: var(--primary);
+        border: 1px solid rgba(208, 122, 90, 0.2);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      section {
+        padding: 90px 0;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 48px;
+        align-items: center;
+        min-height: 80vh;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1, h2, h3 {
+        margin-top: 0;
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 5vw, 5.2rem);
+        margin: 20px 0 18px;
+      }
+
+      .highlight {
+        color: var(--secondary);
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        color: var(--muted);
+        max-width: 620px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .button {
+        display: inline-block;
+        background: var(--primary);
+        color: #fff;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(27, 42, 58, 0.15);
+      }
+
+      .button.secondary {
+        background: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .profile-box {
+        background: var(--panel);
+        border-radius: 28px;
+        box-shadow: 0 20px 40px var(--shadow);
+        padding: 18px;
+      }
+
+      .profile-box img {
+        width: 100%;
+        height: 560px;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-title h2 {
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+        margin-bottom: 10px;
+      }
+
+      .section-title p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .about {
+        background: #f0e9e2;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 42px;
+        align-items: center;
+      }
+
+      .about-grid p {
+        color: var(--muted);
+        margin: 0 0 14px;
+      }
+
+      .about-image {
+        background: var(--panel);
+        border-radius: 28px;
+        padding: 18px;
+        box-shadow: 0 18px 32px var(--shadow);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 18px;
+      }
+
+      .project-grid,
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .project-card,
+      .service-card {
+        background: var(--panel);
+        border-radius: 22px;
+        padding: 28px 22px;
+        box-shadow: 0 14px 26px rgba(17, 25, 33, 0.06);
+      }
+
+      .project-card span {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: var(--secondary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+      }
+
+      .project-card h3,
+      .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
+
+      .project-card p,
+      .service-card p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
+
+      .service-card p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .contact-card {
+        background: var(--panel);
+        padding: 32px;
+        border-radius: 22px;
+        box-shadow: 0 14px 26px rgba(17, 25, 33, 0.07);
+      }
+
+      .contact-card p {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+
+      footer {
+        background: var(--primary);
+        color: rgba(255,255,255,0.8);
+        text-align: center;
+        padding: 28px 0;
+      }
+
+      @media (max-width: 760px) {
+        .nav-links {
+          gap: 12px;
+          font-size: 0.9rem;
+        }
+
+        .hero,
+        .about-grid,
+        .services-grid,
+        .contact-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .profile-box img {
+          height: 440px;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="#home" class="brand">Wallace Ganda</a>
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="button-link">Hire Me</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="container hero">
+        <div>
+          <span class="eyebrow">Student Portfolio</span>
+          <h1>Hello, I'm <span class="highlight">Wallace Ganda</span></h1>
+          <h3>Welcome to my autobiography</h3>
+          <p>
+            This website tells a little story about who I am, my interests, my skills,
+            and my goals. I am a student at KCA University with a growing passion for
+            software development and web design.
+          </p>
+          <div class="actions">
+            <a href="#about" class="button">Learn More</a>
+            <a href="#contact" class="button secondary">Contact Me</a>
+          </div>
+          <div class="badges">
+            <span class="badge">HTML</span>
+            <span class="badge">CSS</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">UI Design</span>
+          </div>
+        </div>
+
+        <div class="profile-box">
+          <img src="wallace.passport.jpeg" alt="Wallace Ganda profile photo" />
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container about-grid">
+          <div class="about-image">
+            <img src="wallace.passport.jpeg" alt="Wallace Ganda portrait" />
+          </div>
+
+          <div>
+            <div class="section-title" style="text-align: left; margin-bottom: 18px;">
+              <h2>About Me</h2>
+            </div>
+            <p>
+              My name is Wallace Ganda. I am a student at KCA University, and I am
+              passionate about software development. I enjoy learning new things and
+              building my skills in coding and digital technology.
+            </p>
+            <p>
+              I started learning programming because I wanted to understand how websites
+              and applications are created. I am especially interested in creating useful,
+              well-designed digital solutions and growing into a skilled software developer.
+            </p>
+            <p>
+              My goal is to keep improving my technical knowledge, develop practical
+              problem-solving skills, and one day contribute meaningfully to the world of
+              technology.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-title">
+            <h2>Featured Work</h2>
+            <p>Projects and skills that reflect my growth in digital technology.</p>
+          </div>
+
+          <div class="project-grid">
+            <div class="project-card">
+              <span>Skills</span>
+              <h3>MY SKILL LEVEL</h3>
+              <h4>How my skills range in software development field of work </h4>
+              <ol>
+                <li>HTML-80%</li>
+                <li>CSS-70%</li>
+                <li>JavaScript</li>
+                <li>git and git hub-50%</li>
+                <li>python-75%</li>
+              </ol>
+            </div>
+
+            <div class="project-card">
+              <span>Project Examples</span>
+              <h3>proof of my skills</h3>
+              <h4 title="project card 1">HTML teaching manual</h4>
+              <p>
+                I have created a few projects to demonstrate my skills in web design and
+                programming. In these projects i have come up with a tutorial on how to learn html for begginers called <strong>Bro code <em>HTML</em> visual tutorial</strong>
+              </p>
+            </h4>
+            <p>In this project it covers everything to do with the basis of html from learning how to use tags to creating responsive layouts.</p>
+            <a href="https://youtu.be/HD13eq_Pmp8" target="_blank" class="button">View Project</a>
+            <h4 title="project card 2">CSS Styling Project</h4>
+            <p>This project demonstrates my ability to create visually appealing and responsive web designs using CSS.</p>
+            <a href="https://youtu.be/wRNinF7YQqQ?si=Xip9knSN4TDs61VH" target="_blank" class="button">View Project</a>
+            <h4 title="project card 3">JavaScript Interactive Project</h4>
+            <p>This project showcases my skills in JavaScript by creating interactive web elements and dynamic content.</p>
+            <a href="https://youtu.be/lfmg-EJ8gm4?si=HIwJ_df0Kx3RB33v" target="_blank" class="button">View Project</a>
+            </div>
+
+            <div class="project-card">
+              <span>JavaScript Interaction</span>
+              <h3>JavaScript Skills</h3>
+              <p>
+                in this page i have created a few projects to demonstrate my skills in web design and programming using Java script.  
+              </p>
+              <a href="javascript.html" target="_blank" class="button">View Project</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-title">
+            <h2>My Services</h2>
+            <p>Skills and areas I am developing as part of my journey.</p>
+          </div>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>Web Design</h3>
+              <p>
+                Creating simple, modern, and attractive websites using HTML and CSS
+                to make digital experiences more engaging.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <h3>Programming</h3>
+              <p>
+                Learning and developing basic programs using different programming
+                languages and improving logical thinking through code.
+              </p>
+            </div>
+
+            <div class="service-card">
+              <h3>Computer Skills</h3>
+              <p>
+                Supporting basic computer operations, software installation, and general
+                digital assistance for everyday productivity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-title">
+            <h2>Contact Me</h2>
+            <p>Let's connect and grow together.</p>
+          </div>
+
+          <div class="contact-wrap">
+            <div class="contact-card">
+              <p><strong>Email:</strong> wallaceganda@gmail.com</p>
+              <p><strong>Phone:</strong> +254 727 577 390</p>
+              <p><strong>Location:</strong> Kisumu, Kenya</p>
+            </div>
+
+            <div class="contact-card">
+              <p>
+                I am open to learning opportunities, collaborations, and projects that help
+                me build my skills in technology and software development.
+              </p>
+              <a href="mailto:wallaceganda@gmail.com" class="button">Send Email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        &copy; 2026 Wallace Ganda. All Rights Reserved.
+      </div>
+    </footer>
+  </body>
+</html>
